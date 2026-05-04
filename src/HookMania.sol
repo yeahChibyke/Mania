@@ -17,21 +17,9 @@ contract HookMania is ERC721, Ownable, BaseHook {
     using PoolIdLibrary for PoolKey;
 
     uint256 private _nextTokenId;
-    string private _tokenURI;
+    string private _tokenURI = "Hook Mania 4 Life";
 
-    constructor(IPoolManager poolManager, string memory tokenURI_)
-        ERC721("Hook Mania", "MANIA")
-        Ownable(msg.sender)
-        BaseHook(poolManager)
-    {
-        _tokenURI = tokenURI_;
-    }
-
-    // function mint(address to) external onlyOwner returns (uint256 tokenId) {
-    //     tokenId = ++_nextTokenId;
-
-    //     _safeMint(to, tokenId);
-    // }
+    constructor(IPoolManager poolManager) ERC721("Hook Mania", "MANIA") Ownable(msg.sender) BaseHook(poolManager) {}
 
     function setTokenURI(string memory tokenURI_) external onlyOwner {
         _tokenURI = tokenURI_;
